@@ -8,24 +8,11 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
 import { BsCardChecklist } from "react-icons/bs";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { AiOutlineClockCircle } from "react-icons/ai";
 
-const PopularCourses = () => {
-  const [courses, setCourses] = useState([]);
-
-  useEffect(() => {
-    const getAllCourses = async () => {
-      const res = await axios.get("http://localhost:8000/api/all-courses");
-      setCourses(res.data.courses);
-    };
-    getAllCourses();
-    console.log(courses);
-  }, []);
-
+const PopularCourses = ({ courses }) => {
   return (
     <Box w={"full"} pt={20}>
       <Container maxW={"container.lg"}>
@@ -36,7 +23,7 @@ const PopularCourses = () => {
           Kurslar
         </Heading>
         <Grid gridTemplateColumns={"repeat(2,1fr)"} gap={6}>
-          {courses?.slice(0, 4).map((c) => (
+          {courses?.map((c) => (
             <Box
               p={4}
               border={"1px solid #ccc"}

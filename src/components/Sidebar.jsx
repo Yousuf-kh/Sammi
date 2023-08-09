@@ -7,6 +7,7 @@ import {
 
 import { PiBooksLight } from "react-icons/pi";
 import { FaQuestionCircle } from "react-icons/fa";
+import { Link, NavLink } from "react-router-dom";
 
 const Sidebar = () => {
   const navigations = [
@@ -17,7 +18,7 @@ const Sidebar = () => {
     },
     {
       name: "Kurslar",
-      path: "/",
+      path: "/kurslar",
       icon: PiBooksLight,
     },
     {
@@ -52,9 +53,11 @@ const Sidebar = () => {
             <Box cursor={"pointer"} p={5} mt={4} key={i}>
               <Flex align={"center"} gap={2}>
                 <Icon fontSize={"20px"} as={c.icon} />
-                <Text fontSize={"20px"} fontWeight={"600"}>
-                  {c.name}
-                </Text>
+                <NavLink to={c.path}>
+                  <Text fontSize={"20px"} fontWeight={"600"}>
+                    {c.name}
+                  </Text>
+                </NavLink>
               </Flex>
             </Box>
           ))}
